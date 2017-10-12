@@ -1,0 +1,194 @@
+@charset "utf-8";
+/*--------------------------------------------------------------------------------
+ * Project: projectName,
+ * By: Backbone Technology Bogotá © 2017,
+ * Craftman: -- .. --. ..- . .-..     .-. --- --.. ---
+ * -----------------------------------------------------------------------------*/
+
+
+/*--------------------------------------------------------------------------------
+ * VARIABLES
+ * -----------------------------------------------------------------------------*/
+$fontMain: 'Lato',sans-serif;
+$fontTitle: 'Montserrat',sans-serif;
+$textColor: #6B6B6B;
+$contMaxWidth: 960px;
+
+
+/*--------------------------------------------------------------------------------
+ * MIXINS
+ * -----------------------------------------------------------------------------*/
+@mixin transition($params){ -webkit-transition: $params; -o-transition: $params; transition: $params; }
+
+
+/*--------------------------------------------------------------------------------
+ * GENERAL
+ * -----------------------------------------------------------------------------*/
+body{
+	font-family: $fontMain; color: $textColor;
+	&.noscroll{ overflow: hidden; }
+}
+figure{ margin: 0; }
+img{ max-width: 100%; }
+a{ text-decoration: none; @include transition(all 0.6s); }
+
+.makeBg{
+	background-color: #eee; background-size: cover; background-position: 50% 50%;
+	& > img:first-child{ display: none; }
+}
+.vid{
+	display: block; width: 100%; height: 0; padding-top: 56.25%; position: relative; background-color: #EEE;
+	iframe{ display: block; width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
+}
+.ulReset{ padding: 0; margin: 0; list-style: none; }
+.container{ width: 100%; max-width: $contMaxWidth; padding: 0 15px; margin: 0 auto; }
+.fullContainer{ width: 100%; padding: 0 15px; }
+.container-l{ width: 100%; max-width: 1200px; padding: 0 15px; margin: 0 auto; }
+.container-s{ width: 100%; max-width: 750px; padding: 0 15px; margin: 0 auto; }
+.container-xs{ width: 100%; max-width: 530px; padding: 0 15px; margin: 0 auto; }
+.tableHold{
+	overflow-y: auto;
+	table{ width: 100%; }
+}
+
+.title{ display: block; margin: 0.5em 0; font-family: $fontTitle; font-size: 26px; font-weight: 600; line-height: 1; text-transform: uppercase; color: #7CDFDA; }
+.subtitle{ display: block; margin: 0.5em 0; font-family: $fontTitle; font-size: 14px; font-weight: 700; line-height: 1; text-transform: uppercase; color: $textColor; }
+.text{
+	font-size: 16px; font-weight: 400; line-height: 1.5; color: $textColor;
+	ul:not(.ulReset){
+		display: block; margin: 20px 0; padding: 0; list-style: none;
+		li{ display: block; margin: 0.5em 0; padding-left: 25px; position: relative; }
+		li::before{ content: "•"; display: block; width: 15px; height: 1em; font-size: 1.3em; line-height: 1; text-align: left; color: #7CDFDA; position: absolute; top: 0; left: 0; }
+	}
+	a:not(.btn){ text-decoration: underline; color: #42BEB4; }
+	blockquote{
+		display: block; margin: 30px 20px; padding: 0 20px; border-left: 3px solid #8CE900; font-size: 20px; font-style: italic; position: relative;
+		&::after{ content: "\201D"; display: inline-block; height: 25px; font-size: 60px; font-style: normal; line-height: 1; color: #8CE900; position: absolute; top: 0; right: 0; }
+	}
+}
+
+.btn{
+	display: inline-block; width: auto; min-width: 160px; padding: 7px 20px; border: 1px solid #9CE2DE; font-family: $fontTitle; font-size: 14px; font-weight: 500; line-height: 1; text-align: center; background: #9CE2DE; color: #FFF; cursor: pointer; outline: 0;
+	&.btn-white{ background: #FFF; color: #7CDFDA; border-color: #FFF; }
+	&.btn-white-o{ background: #FFF; color: #7CDFDA; border-color: #7CDFDA; }
+	&.btn-light{ background: #D1F5F4; color: #4EC8C1; border-color: #D1F5F4; }
+	&.btn-red{ background: #F8BFAB; color: #FFF; border-color: #F8BFAB; }
+	&.btn-full{ width: 100%; }
+}
+.close-cross{
+	width: 20px; height: 20px; position: relative; display: block;
+	&::after,
+	&::before{ content: ""; background: #000; height: 2px; position: absolute; top: 50%; left: 2px; right: 2px; margin-top: -1px; transform: rotate(45deg); }
+	&::after{ transform: rotate(-45deg); }
+	&:hover::after,
+	&:hover::before{ background: #A6A6A6; }
+}
+
+.formHold{
+	margin-left: -20px;
+	.formCol{
+		vertical-align: bottom; padding: 0 0 20px 20px; position: relative;
+		&.formCol-last{ padding-bottom: 0; }
+	}
+}
+.inputSkin{
+	position: relative; border: 0; border: 1px solid #9CE2DE;
+	input{ display: block; width: 100%; height: 30px; padding: 0 10px; border: 0; font-size: 14px; line-height: 30px; outline: 0; background: #F0FBFA; color: $textColor; }
+	textarea{ display: block; width: 100%; height: auto; padding: 10px; border: 0; font-size: 14px; line-height: 1.3; resize: none; outline: 0; background: #F0FBFA; }
+}
+.inputLabel{ display: block; margin-bottom: 5px; font-size: 14px; line-height: 1; color: $textColor; cursor: pointer; }
+.checkSkin{
+	display: block; width: auto; margin: 10px 0; position: relative; cursor: pointer;
+	input{ display: block; width: 1px; height: 1px; position: absolute; top: 0; left: 0; opacity: 0; visibility: hidden; }
+	&.radioSkin .checkSkin-label::before{ border-radius: 50%; }
+}
+.checkSkin-label{
+	display: block; padding-left: 23px; font-size: 12px; color: $textColor; position: relative;
+	&::before{ content: "\f00c"; display: block; width: 16px; height: 16px; margin-top: -2px; border: 1px solid #9CE2DE; font-family: "FontAwesome"; font-size: 0; line-height: 16px; text-align: center; background: #f0fbfa; color: #000; position: absolute; top: 0; left: 0; }
+	a{ text-decoration: underline; color: #7CDFDA; }
+}
+.checkSkin input:checked + .checkSkin-label::before{ font-size: 12px; background: #9CE2DE; color: $textColor; }
+.selectSkin{
+	position: relative; border: 0; border: 1px solid #9CE2DE;
+	select{ display: block; width: 100%; height: 30px; margin: 0; padding: 0; /*padding-right: 30px;*/ border: 0; font-size: 14px; font-weight: 400; line-height: 40px; background: #F0FBFA; color: $textColor; outline: 0; cursor: pointer; }
+	option{ padding: 5px 0; font-size: 14px; }
+	option:disabled{ background: #eee; color: #ccc; }
+	&::after{ position: absolute; top: 1px; right: 0; bottom: 1px; width: 30px; text-align: center; content:'\f107'; line-height: 30px; font-family: 'FontAwesome'; background: #F0FBFA; pointer-events: none; }
+}
+.inputDate{
+	input{ cursor: pointer; }
+	&::after{ position: absolute; top: 1px; right: 0; bottom: 1px; width: 30px; text-align: center; content:'\f073'; line-height: 30px; font-family: 'FontAwesome'; background: #F0FBFA; pointer-events: none; }
+}
+.fileSkin{
+	position: relative; cursor: pointer; display: -webkit-flex; display: -moz-flex; display: -ms-flex; display: -o-flex; display: flex;
+	&::after{ content: "Buscar archivo"; display: inline-block; width: auto; min-width: 110px; padding: 7px 10px; border: 1px solid #9CE2DE; font-family: $fontTitle; font-size: 14px; font-weight: 500; line-height: 1; text-align: center; background: #9CE2DE; color: #FFF; cursor: pointer; outline: 0; }
+	input{ display: none; }
+}
+.fileSkin-label{ display: block; width: 100%; height: 30px; padding: 0 10px; border: 0; border: 1px solid #9CE2DE; font-size: 14px; line-height: 30px; outline: 0; background: #F0FBFA; color: $textColor; overflow: hidden; white-space: nowrap; -ms-text-overflow: ellipsis; text-overflow: ellipsis; }
+
+.captchaHold{ display: block; width: 100%; overflow: hidden; }
+
+.ui-widget{ width: auto; min-width: 250px; margin-top: 5px; border: 1px solid #6B6b6B; border-radius: 0; font-family: 'Lato', sans-serif; background: #fff; color: #3d3d3d; }
+.ui-datepicker-header{ margin: 0; padding: 10px 0; border: 0; border-bottom: 1px solid #6B6b6B; border-radius: 0; font-size: 0; font-weight: 400; background: none; }
+.ui-datepicker-calendar thead{ border-bottom: 1px solid #6B6b6B; }
+.ui-datepicker-today .ui-state-default{ background: #F8BFAB; color: #FFF; font-weight: 700; }
+.ui-datepicker{
+	.ui-datepicker-title select{ width: 48%; height: 25px; margin: 0 1%; border: 1px solid #6B6b6B; font-size: 12px; font-weight: 400; } 
+	.ui-datepicker-month{ display: inline-block; vertical-align: baseline; margin-right: 10px; padding-right: 10px; border-right: 2px solid #6B6b6B; font-size: 15px; font-weight: 700; line-height: 1; }
+	.ui-datepicker-year{ display: inline-block; vertical-align: baseline; font-size: 15px; font-weight: 400; line-height: 1; }
+	th{ padding: 10px 5px; font-size: 13px; color: $textColor; }
+	.ui-state-default{ display: block; width: 30px; height: 30px; margin: 0 auto; padding: 0; border: 0; border-radius: 2px; font-size: 14px; line-height: 30px; text-align: center; background: #FFF; color: $textColor; }
+	.ui-state-default:hover{ background: #DDD; }
+	.ui-state-disabled .ui-state-default{ background: none; }
+	.ui-state-default.ui-state-active{ background: #9CE2DE; color: #FFF; font-weight: 700; }
+	.ui-datepicker-prev,
+	.ui-datepicker-next{ width: 30px; height: 30px; margin: 0; padding: 0; border: 0; font-size: 0; line-height: 30px; text-align: center; background: #fff; top: 2px; cursor: pointer; }
+	.ui-datepicker-prev::before,
+	.ui-datepicker-next::before{ display: inline-block; font-family: 'FontAwesome'; font-size: 18px; color: #3D3D3D; }
+	.ui-datepicker-prev::before{ content:'\f104'; }
+	.ui-datepicker-next::before{ content:'\f105'; }
+	.ui-datepicker-prev span,
+	.ui-datepicker-next span{ display: none; }
+	.ui-datepicker-prev,
+	.ui-datepicker-prev-hover{ left: 0; }
+	.ui-datepicker-next,
+	.ui-datepicker-next-hover{ right: 0; }
+	&.noArrows .ui-datepicker-prev,
+	&.noArrows .ui-datepicker-next{ display: none; }
+}
+
+.slick-dots{
+	display: block; width: 100%; margin: 0; padding: 0; list-style: none; font-size: 0; text-align: center;
+	li{ display: inline-block; vertical-align: middle; margin: 0 4px; }
+	button{ display: block; width: 8px; height: 8px; margin: 0; padding: 0; border: 1px solid #6B6b6B; border-radius: 50%; font-size: 0; background: none; cursor: pointer; outline: 0; }
+	li.slick-active button{ background: #7CDFDA; }
+}
+.slick-slider{
+	.slick-arrow{ display: block; width: 25px; height: 25px; margin: 0; border-radius: 50%; font-size: 25px; line-height: 25px; text-align: center; background: #FFF; color: #F8BFAB; cursor: pointer; }
+	.slick-prev{ text-indent: -0.17em; }
+	.slick-next{ text-indent: 0.17em; }
+}
+
+.separator{ display: block; width: 100%; max-width: 380px; height: 1px; margin: 30px auto; background: #7CDFDA; }
+
+
+/*--------------------------------------------------------------------------------
+ * HOME
+ * -----------------------------------------------------------------------------*/
+.sample{  }
+
+
+/*--------------------------------------------------------------------------------
+ * JUAMGRID MEDIA QUERIES
+ * -----------------------------------------------------------------------------*/
+/* ==== Special ChrarlyHoov-size ==== */
+@media only screen and (min-width: 1540px){}
+@media only screen and (max-width: 1259px){
+	/*----------------------------------------------------------------------------
+	 * HOME
+	 * -------------------------------------------------------------------------*/
+	.sample{  }
+}
+@media only screen and (max-width: 979px){}
+@media only screen and (max-width: 719px){}
+@media only screen and (max-width: 479px){}
